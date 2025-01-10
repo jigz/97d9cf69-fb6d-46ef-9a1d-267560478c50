@@ -39,6 +39,7 @@ export const createServer = (): Express => {
     return res.json({ data })
   })
 
+  // TODO: Add pagination
   app.get('/trackings', async (_, res) => {
     const trackings = await TrackingModel.find({})
     return res.json({ trackings })
