@@ -8,15 +8,10 @@
 
 http://localhost:3000
 
-## GET
-
-http://localhost:3000/api/trackings
-http://localhost:3000/api/trackings/direct
-
-## POST
-
-http://localhost:3000/api/trackings/fetch
-
 ## Api
 
 http://localhost:5001
+http://localhost:5001/trackings
+http://localhost:5001/trackings/direct
+
+http://localhost:5001/trackings/fetch - POST

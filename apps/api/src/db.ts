@@ -32,7 +32,7 @@ const TrackingSchema = new mongoose.Schema({
   address: { type: String },
   note: { type: String },
   latitude: { type: Number },
-  longtitude: { type: Number },
+  longitude: { type: Number },
 })
 export const TrackingModel =
   mongoose.models.trackings || mongoose.model('trackings', TrackingSchema)
