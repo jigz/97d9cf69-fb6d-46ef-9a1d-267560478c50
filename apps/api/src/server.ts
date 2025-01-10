@@ -40,7 +40,8 @@ export const createServer = (): Express => {
   })
 
   app.get('/trackings', async (_, res) => {
-    return res.json({ ok: true })
+    const trackings = await TrackingModel.find({})
+    return res.json({ trackings })
   })
 
   app.post('/trackings/fetch', async (_, res) => {
