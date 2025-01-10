@@ -4,14 +4,34 @@ Content-Type: application/json
 tracking-api-key: 69c01f5e-5eef-4b4d-9bf3-07762d5f8888
 
 ###
-GET localhost:3000/api/trackings/direct
+GET http://localhost:5001/status
 Content-Type: application/json
 
 ###
-GET localhost:3000/api/trackings/
+GET http://localhost:5001/trackings/direct
+Content-Type: application/json
+
+###
+GET http://localhost:5001/trackings
 Content-Type: application/json
 
 
 ###
-POST localhost:3000/api/trackings/fetch
+POST http://localhost:5001/trackings/fetch
+Content-Type: application/json
+
+
+
+################################
+###
+GET http://localhost:3000/api/trackings/direct
+Content-Type: application/json
+
+###
+GET http://localhost:3000/api/trackings/
+Content-Type: application/json
+
+
+###
+POST http://localhost:3000/api/trackings/fetch
 Content-Type: application/json

@@ -1,16 +1,22 @@
-# Commands
+# Trackings
 
 `pnpm dev`
 
+## Web
+
 # URLs
 
-localhost:3000
+http://localhost:3000
 
 ## GET
 
-localhost:3000/api/trackings
-localhost:3000/api/trackings/direct
+http://localhost:3000/api/trackings
+http://localhost:3000/api/trackings/direct
 
 ## POST
 
-localhost:3000/api/trackings/fetch
+http://localhost:3000/api/trackings/fetch
+
+## Api
+
+http://localhost:5001
