@@ -15,23 +15,10 @@ Content-Type: application/json
 GET http://localhost:5001/trackings
 Content-Type: application/json
 
-
 ###
 POST http://localhost:5001/trackings/fetch
 Content-Type: application/json
 
 
 
-################################
-###
-GET http://localhost:3000/api/trackings/direct
-Content-Type: application/json
 
-###
-GET http://localhost:3000/api/trackings/
-Content-Type: application/json
-
-
-###
-POST http://localhost:3000/api/trackings/fetch
-Content-Type: application/json

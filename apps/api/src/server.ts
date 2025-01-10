@@ -3,6 +3,7 @@ import express, { type Express } from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import 'dotenv/config'
+import { TrackingModel } from './db'
 
 // TODO: Check tsc 5.6.3 issue
 type HeadersInit = Headers | string[][] | { [key: string]: string }
@@ -19,7 +20,7 @@ export const createServer = (): Express => {
       return res.json({ message: `hello ${req.params.name}` })
     })
 
-  app.get('/status', (_, res) => {
+  app.get('/status', async (_, res) => {
     return res.json({ ok: true })
   })
 
@@ -34,9 +35,37 @@ export const createServer = (): Express => {
         } as HeadersInit,
       },
     )
-    console.log(process.env.TRACKING_API_KEY)
     const data = await sourceRes.json()
     return res.json({ data })
+  })
+
+  app.get('/trackings', async (_, res) => {
+    return res.json({ ok: true })
+  })
+
+  app.post('/trackings/fetch', async (_, res) => {
+    // TODO: Add zod typechecking for 3rd party API
+    const sourceRes = await fetch(
+      'https://ust-testing.beautitag.com/tch/api/v1/trackings',
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'tracking-api-key': process.env.TRACKING_API_KEY,
+        } as HeadersInit,
+      },
+    )
+    // TODO: Use zod to assign proper types
+    const data: any = await sourceRes.json()
+    const trackings = data?.data.trackings || []
+
+    const updateRes = await TrackingModel.bulkWrite(
+      trackings.map(({ _id, ...data }: any) => ({
+        updateOne: { upsert: true, filter: { _id }, update: { ...data } },
+      })),
+    )
+
+    return res.json({ message: 'Trackings Synced', updated: updateRes })
   })
 
   return app
