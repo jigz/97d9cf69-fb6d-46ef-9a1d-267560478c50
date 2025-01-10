@@ -1,0 +1,4 @@
+###
+GET https://ust-testing.beautitag.com/tch/api/v1/trackings
+Content-Type: application/json
+tracking-api-key: 69c01f5e-5eef-4b4d-9bf3-07762d5f8888
