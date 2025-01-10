@@ -1,16 +1,16 @@
 export async function GET(req: Request) {
+  // TODO: Use zod typechecking for 3rd part APIs
   const res = await fetch(
-    "https://ust-testing.beautitag.com/tch/api/v1/trackings",
+    'https://ust-testing.beautitag.com/tch/api/v1/trackings',
     {
-      method: "GET",
+      method: 'GET',
       headers: {
-        "Content-Type": "application/json",
-        "tracking-api-key": "69c01f5e-5eef-4b4d-9bf3-07762d5f8888",
-        //"API-Key": process.env.DATA_API_KEY,
+        'Content-Type': 'application/json',
+        'tracking-api-key': process.env.TRACKING_API_KEY,
       } as HeadersInit,
-    }
-  );
-  const data = await res.json();
+    },
+  )
+  const data = await res.json()
 
-  return Response.json({ data });
+  return Response.json({ data })
 }
